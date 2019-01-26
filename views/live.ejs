@@ -22,6 +22,7 @@
         }
     </style>
     <div id='acceptInvite'>Test</div>
+    <div id='acceptInvite'>Test</div>
     <!-- Start of Invitations -->
     <div class="embeddedServiceInvitation" id="snapins_invite" inert aria-live="assertive" role="dialog" aria-atomic="true">
         <div class="embeddedServiceInvitationHeader" aria-labelledby="snapins_titletext" aria-describedby="snapins_bodytext">
@@ -207,6 +208,7 @@
 
     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
+        var url = window.location.href
         var initESW = function(gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = true; //Or false
             embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -215,7 +217,7 @@
             //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
             //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-            //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+            embedded_svc.settings.storageDomain = 'damp-hollows-26130.herokuapp.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
             // Settings for Live Agent
             //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
@@ -228,6 +230,12 @@
 
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
             embedded_svc.settings.entryFeature = 'LiveAgent';
+            embedded_svc.settings.extraPrechatFormDetails = [{
+                "label": "Url",
+                "value": url,
+                "displayToAgent": true,
+                "transcriptFields": "Url"
+            }];
 
             embedded_svc.init(
                 'https://pin--dev.my.salesforce.com',
