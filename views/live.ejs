@@ -7,6 +7,7 @@
             .embeddedServiceHelpButton .helpButton .uiButton {
                 background-color: #faff87;
                 font-family: "Arial", sans-serif;
+                color: black;
             }
             .embeddedServiceHelpButton .helpButton .uiButton:focus {
                 outline: 1px solid #faff87;
@@ -35,8 +36,8 @@
             @media only screen and (min-width: 48em) { /*mobile*/ .embeddedServiceInvitation { max-width: 332px; max-height: 210px; } }
             .embeddedServiceInvitation > .embeddedServiceInvitationHeader { width: inherit; height: 32px; line-height: 32px; padding: 10px; color: #FFFFFF; background-color: #faff87; overflow: initial; display: flex; justify-content: space-between; align-items: stretch; border-top-left-radius: 8px; border-top-right-radius: 8px; }
             .embeddedServiceInvitationHeader #embeddedServiceAvatar { width: 32px; height: 32px; border-radius: 50%; }
-            .embeddedServiceInvitationHeader .embeddedServiceTitleText { font-size: 18px; color: #FFFFFF; overflow: hidden; word-wrap: normal; white-space: nowrap; text-overflow: ellipsis; align-self: stretch; flex-grow: 1; max-width: 100%; margin: 0 12px; }
-            .embeddedServiceInvitationHeader .embeddedServiceCloseIcon { border: none; border-radius: 3px; cursor: pointer; position: relative; bottom: 3%; background-color: transparent; width: 32px; height: 32px; font-size: 23px; color: #FFFFFF; }
+            .embeddedServiceInvitationHeader .embeddedServiceTitleText { font-size: 18px; color:black; overflow: hidden; word-wrap: normal; white-space: nowrap; text-overflow: ellipsis; align-self: stretch; flex-grow: 1; max-width: 100%; margin: 0 12px; }
+            .embeddedServiceInvitationHeader .embeddedServiceCloseIcon { border: none; border-radius: 3px; cursor: pointer; position: relative; bottom: 3%; background-color: transparent; width: 32px; height: 32px; font-size: 23px; color:black; }
             .embeddedServiceInvitationHeader .embeddedServiceCloseIcon:focus { outline: none; }
             .embeddedServiceInvitationHeader .embeddedServiceCloseIcon:focus::before { content: " "; position: absolute; top: 11%; left: 7%; width: 85%; height: 85%; background-color: rgba(255, 255, 255, 0.2); border-radius: 4px; pointer-events: none; }
             .embeddedServiceInvitationHeader .embeddedServiceCloseIcon:active, .embeddedServiceCloseIcon:hover { background-color: #FFFFFF; color: rgba(0,0,0,0.7); opacity: 0.7; }
@@ -44,8 +45,8 @@
             .embeddedServiceInvitationBody p { color: #000000; padding: 8px; margin: 12px 0; }
             .embeddedServiceInvitation > .embeddedServiceInvitationFooter { width: inherit; color: #FFFFFF; text-align: right; background-color: #FFFFFF; padding: 10px; max-height: 50px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
             .embeddedServiceInvitationFooter > .embeddedServiceActionButton { font-size: 14px; max-height: 40px; border: none; border-radius: 4px; padding: 10px; margin: 4px; text-align: center; text-decoration: none; display: inline-block; cursor: pointer; }
-            .embeddedServiceInvitationFooter > #acceptInvite { background-color: #faff87; color: #FFFFFF; }
-            .embeddedServiceInvitationFooter > #rejectInvite { background-color: #FFFFFF; color: #faff87; }
+            .embeddedServiceInvitationFooter > #acceptInvite { background-color: #faff87; color: black; }
+            .embeddedServiceInvitationFooter > #rejectInvite { background-color: #FFFFFF; color: black; }
         </style>
         
         <script type='text/javascript'>
@@ -92,10 +93,6 @@
                 "displayToAgent": true,
                 "transcriptFields": ["Url__c"]
             }];
-
-        
-                embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-                embedded_svc.settings.entryFeature = 'LiveAgent';
         
                 embedded_svc.init(
                     'https://pin--dev.my.salesforce.com',

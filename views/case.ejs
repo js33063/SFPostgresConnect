@@ -2,7 +2,7 @@
 <html>
 <style>
     body {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: Arial, Helvetica;
     }
     
     * {
@@ -190,21 +190,16 @@
     <style type='text/css'>
         .embeddedServiceHelpButton .helpButton .uiButton {
             background-color: #005290;
-            font-family: "Salesforce Sans", sans-serif;
+            font-family: "Arial";
         }
         
         .embeddedServiceHelpButton .helpButton .uiButton:focus {
             outline: 1px solid #005290;
         }
         
-        @font-face {
-            font-family: 'Salesforce Sans';
-            src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'), url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-        }
+       
     </style>
-    <div id='acceptInvite'>Test</div>
-    <div id='acceptInvite'>Test</div>
-    <!-- Start of Invitations -->
+  
     <div class="embeddedServiceInvitation" id="snapins_invite" inert aria-live="assertive" role="dialog" aria-atomic="true">
         <div class="embeddedServiceInvitationHeader" aria-labelledby="snapins_titletext" aria-describedby="snapins_bodytext">
             <img id="embeddedServiceAvatar">
@@ -223,7 +218,7 @@
     <style type='text/css'>
         #snapins_invite {
             background-color: #FFFFFF;
-            font-family: "Salesforce Sans", sans-serif;
+            font-family: "Arial";
             overflow: visible;
             border-radius: 8px;
             visibility: hidden;
@@ -385,8 +380,7 @@
             })
         })();
     </script>
-    <!-- End of Invitations -->
-
+ 
     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
         var url = window.location.href;
@@ -399,7 +393,7 @@
             //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
             //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-            embedded_svc.settings.storageDomain = 'damp-hollows-26130.herokuapp.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+         //   embedded_svc.settings.storageDomain = 'damp-hollows-26130.herokuapp.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
             // Settings for Live Agent
             //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
@@ -446,4 +440,5 @@
             initESW('https://service.force.com');
         }
     </script>
+
 </body>
