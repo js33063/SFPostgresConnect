@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var jsforce = require('jsforce');
 var index = require('./routes/index');
+var sfconnect = require('./routes/sfconnect');
+var  Client = require('pg');
 
 
 var app = express();
@@ -24,7 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-app.use('/', index); // localhost:3000/
+app.use('/', index); 
+app.use('/sf', sfconnect);// localhost:3000/
 
 
 // catch 404 and forward to error handler
