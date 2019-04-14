@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var jsforce = require('jsforce');
+const { Client } = require('pg');
 // localhost:3000/aaa
 var oauth2 = new jsforce.OAuth2({
     // you can change loginUrl to connect to sandbox or prerelease env.
@@ -13,6 +14,11 @@ var oauth2 = new jsforce.OAuth2({
 
 
 });
+
+var client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
+  });
 /* GET home page. */
 router.get("/", function(req, res, next) {
     res.render("case", { msg: "Welcome" });
@@ -63,5 +69,16 @@ router.get('/oauth2/callback', function(req, res) {
         res.send('success'); // or your desired response
     });
 });
+router.get("/postgres", function(req, res, next) {
+    client.connect();
+  
+    client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+      if (err) throw err;
+      for (let row of res.rows) {
+        console.log(JSON.stringify(row));
+      }
+      client.end();
+    });
+  });
 
 module.exports = router;
