@@ -69,19 +69,20 @@ router.get('/oauth2/callback', function(req, res) {
         res.send('success'); // or your desired response
     });
 });
-router.get("/postgres", function(req, res, next) {
+router.get("/getallCases", function(req, res, next) {
     client.connect();
      var arr = [];
-    client.query('SELECT * from salesforce.case;', (err, res) => {
+    client.query('SELECT * from salesforce.case;', (err, result) => {
       if (err) throw err;
-      for (let row of res.rows) {
+      for (let row of result.rows) {
           arr.push(JSON.stringify(row));
         console.log(JSON.stringify(row));
       }
 
+      res.render("allcases", { msg: arr });
       client.end();
     });
-    res.render("allcases", { msg: arr });
+    
   });
 
 module.exports = router;

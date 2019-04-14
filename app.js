@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var jsforce = require('jsforce');
 var index = require('./routes/index');
-var  Client = require('pg');
 
 
 var app = express();
