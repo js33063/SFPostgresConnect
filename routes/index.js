@@ -16,7 +16,7 @@ var oauth2 = new jsforce.OAuth2({
 });
 
 var client = new Client({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: 'postgres://ztofmzxuprvzke:6fe148964f7f25e2602cea7836bbb9f8f5b0b99cca8dbbafac4902d638686209@ec2-54-83-61-142.compute-1.amazonaws.com:5432/d31aef7km7hgds',
     ssl: true,
   });
 /* GET home page. */
@@ -71,14 +71,17 @@ router.get('/oauth2/callback', function(req, res) {
 });
 router.get("/postgres", function(req, res, next) {
     client.connect();
-  
-    client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+     var arr = [];
+    client.query('SELECT * from salesforce.case;', (err, res) => {
       if (err) throw err;
       for (let row of res.rows) {
+          arr.push(JSON.stringify(row));
         console.log(JSON.stringify(row));
       }
+
       client.end();
     });
+    res.render("allcases", { msg: arr });
   });
 
 module.exports = router;
