@@ -80,7 +80,6 @@ router.get("/getallCases", function(req, res, next) {
     client.query('SELECT * from salesforce.case;', (err, result) => {
       if (err) throw err;
       res.json(result);
-      client.end();
     });
     
   });
@@ -93,7 +92,6 @@ router.get("/getallCases", function(req, res, next) {
     client.query(q, (err, result) => {
       if (err) throw err;
       res.json(result);
-      client.end();
     });
    }
   });
