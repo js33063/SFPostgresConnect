@@ -77,25 +77,19 @@ router.get('/oauth2/callback', function(req, res) {
 });
 router.get("/getallCases", function(req, res, next) {
     client.connect();
-     var arr = [];
     client.query('SELECT * from salesforce.case;', (err, result) => {
       if (err) throw err;
-      for (let row of result.rows) {
-          arr.push(JSON.stringify(row));
-        console.log(JSON.stringify(row));
-      }
-      res.json(arr);
+      res.json(result);
       client.end();
     });
     
   });
 
-  router.get("/insertAccount", function(req, res, next) {
+  router.post("/insertAccount", function(req, res, next) {
       console.log(req.body);
       if(req.body!=null || req.body!=''){
    var q ="INSERT INTO salesforce.account (Name, Phone, PostgresId__c) VALUES('"+req.body.name+"','"+req.body.phone+"','"+gen()+"');";
     client.connect();
-     var arr = [];
     client.query(q, (err, result) => {
       if (err) throw err;
       res.json(result);
