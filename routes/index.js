@@ -2,6 +2,12 @@ var express = require("express");
 var router = express.Router();
 var jsforce = require('jsforce');
 const { Client } = require('pg');
+var rn = require('random-number');
+var gen = rn.generator({
+  min:  10000000
+, max:  99999999
+, integer: true
+})
 // localhost:3000/aaa
 var oauth2 = new jsforce.OAuth2({
     // you can change loginUrl to connect to sandbox or prerelease env.
@@ -78,11 +84,25 @@ router.get("/getallCases", function(req, res, next) {
           arr.push(JSON.stringify(row));
         console.log(JSON.stringify(row));
       }
-
-      res.render("allcases", { msg: arr });
+      res.json(arr);
       client.end();
     });
     
   });
+
+  router.get("/insertAccount", function(req, res, next) {
+      console.log(req.body);
+      if(req.body!=null || req.body!=''){
+   var q ="INSERT INTO salesforce.account (Name, Phone, PostgresId__c) VALUES('"+req.body.name+"','"+req.body.phone+"','"+gen()+"');";
+    client.connect();
+     var arr = [];
+    client.query(q, (err, result) => {
+      if (err) throw err;
+      res.json(result);
+      client.end();
+    });
+   }
+  });
+
 
 module.exports = router;
