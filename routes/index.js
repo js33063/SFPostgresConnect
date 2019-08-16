@@ -30,6 +30,10 @@ router.get("/", function(req, res, next) {
     res.render("case", { msg: "Welcome" });
 });
 
+router.get("/bot", function(req, res, next) {
+  res.render("bot", { msg: "Welcome" });
+});
+
 router.get("/casesubmit", function(req, res, next) {
     res.render("casesubmit", { msg: "Welcome" });
 });

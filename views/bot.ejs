@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+<body>
+        <div id="lightning"></div>
+        <script src="https://plus91labs-developer-edition.ap5.force.com/lightning/lightning.out.js"></script>
+        <script>
+             $Lightning.use("c:lcVfDemoApp", function() {
+                $Lightning.createComponent("c:lcVfDemo", {
+                      
+                    },
+                      "lightning",
+                      function(cmp) {
+                        console.log("LWC component was created");
+                        // do some stuff
+                      }
+                  );
+                },
+               'https://plus91labs-developer-edition.ap5.force.com/'
+              );
+        </script>
+</body>
+</html>
