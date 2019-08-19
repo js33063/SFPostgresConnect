@@ -8,6 +8,8 @@ var gen = rn.generator({
 , max:  99999999
 , integer: true
 })
+var apiai = require('apiai');
+var apiapp = apiai("2cf124ce145f47479e93874e8179628f");
 // localhost:3000/aaa
 var oauth2 = new jsforce.OAuth2({
     // you can change loginUrl to connect to sandbox or prerelease env.
@@ -36,6 +38,22 @@ router.get("/bot", function(req, res, next) {
 
 router.get("/casesubmit", function(req, res, next) {
     res.render("casesubmit", { msg: "Welcome" });
+});
+
+router.post('/mysfbot', function(req, res){
+  console.log(req.body.chatText);
+  var request = apiapp.textRequest(req.body.chatText, {
+    sessionId: '123123'
+  });
+  request.on('response', function(response) {
+      console.log(response);
+      res.send(response);
+  });
+  request.on('error', function(error) {
+      console.log(error);
+      res.send(error);
+  });
+  request.end();
 });
 
 router.get("/live", function(req, res, next) {

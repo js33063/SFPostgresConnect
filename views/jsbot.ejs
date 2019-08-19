@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Propeller is a front-end responsive framework based on Material design & Bootstrap."/>
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport"/>
+    <title>KPMG Assistant</title>
+    
+    <!-- favicon --> 
+    <link rel="icon" href="https://propeller.in/assets/images/favicon.ico" type="image/x-icon"/>
+    
+    <!-- Bootstrap --> 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> 
+    
+    <!-- Propeller card (CSS for helping component example file)-->
+    <link href="https://propeller.in/components/card/css/card.css" type="text/css" rel="stylesheet" />
+    
+    <!-- Example docs (CSS for helping component example file)-->
+    <link href="https://propeller.in/docs/css/example-docs.css" type="text/css" rel="stylesheet" />
+    
+    <!-- Propeller typography -->
+    <link href="https://propeller.in/components/typography/css/typography.css" type="text/css" rel="stylesheet" />
+    
+    <!-- Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--<link href="../components/icons/css/google-icons.css" type="text/css" rel="stylesheet" /> -->
+    
+    <!-- Propeller Button -->
+    <link href="https://propeller.in/components/button/css/button.css" type="text/css" rel="stylesheet" />
+    
+    <!-- Propeller Accordion -->
+    <link href="https://propeller.in/components/floating-action-button/css/floating-action-button.css" type="text/css" rel="stylesheet" /> 
+    
+    <style>
+        
+        body { background:#d6d3cb;}
+        .pmd-floating-action {
+        bottom: 1rem;
+        position: fixed;
+        right: 1rem;
+        z-index: 1000;
+        }
+   
+
+        .queryButtons{
+        bottom:3%;
+        position: absolute;
+        right:8%;
+        padding: 0.4em;
+        border-radius: 10px;
+        margin-left:5px;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
+        background-color:white;
+        flex-wrap:wrap;
+        width: 25%;
+        }
+        
+        .btn-primary{
+        background-color:#00338d;    
+        }
+        .btn-primary:hover{
+        background-color:#00338d;    
+        }
+        
+        .btn-outline-info{
+        border-radius: 14px;
+        margin-left: 12px;
+        background-color:#00338d;
+        padding:5px;
+        color:white;
+        top:3.5px;
+        }
+        .PopUp {
+        display: none;
+        position: fixed;
+        top:35px;
+        bottom: 75px;
+        width:100%;
+        z-index: 9;
+        border-radius: 14px;
+        background-color:white;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        @-webkit-keyframes bounceInUp {
+        from,
+        60%,
+        75%,
+        90%,
+        to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        
+        from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 3000px, 0);
+        transform: translate3d(0, 3000px, 0);
+        }
+        
+        60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -20px, 0);
+        transform: translate3d(0, -20px, 0);
+        }
+        
+        75% {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+        }
+        
+        90% {
+        -webkit-transform: translate3d(0, -5px, 0);
+        transform: translate3d(0, -5px, 0);
+        }
+        
+        to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        }
+        }
+        
+        @keyframes bounceInUp {
+        from,
+        60%,
+        75%,
+        90%,
+        to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        
+        from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 3000px, 0);
+        transform: translate3d(0, 3000px, 0);
+        }
+        
+        60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -20px, 0);
+        transform: translate3d(0, -20px, 0);
+        }
+        
+        75% {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+        }
+        
+        90% {
+        -webkit-transform: translate3d(0, -5px, 0);
+        transform: translate3d(0, -5px, 0);
+        }
+        
+        to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        }
+        }
+        
+        
+        @media (min-width: 481px) and (max-width: 767px) {
+        .PopUp {
+        -webkit-animation-name: bounceInUp;
+        animation-name: bounceInUp;
+        animation: bounceInUp 1s;
+        display: none;
+        position: fixed;
+        top:35px;
+        bottom: 75px;
+        width:100%;
+        z-index: 9;
+        border-radius: 14px;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.3);
+        }
+        .queryButtons{
+        bottom:3%;
+        position: absolute;
+        right:20%;
+        }
+         .content{
+         margin-left:20%; 
+        }
+         .btn-outline-info{
+        border-radius: 14px;
+        margin-left: 12px;
+        background-color:#00338d;
+        padding:5px;
+        color:white;
+        top:3.5px;
+        }
+     
+        }
+   
+        @media (min-width: 320px) and (max-width: 480px) {
+        .PopUp {
+        -webkit-animation-name: bounceInUp;
+        animation-name: bounceInUp;
+        animation: bounceInUp 1s;
+        display: none;
+        position: fixed;
+        top:35px;
+        bottom: 75px;
+        width:100%;
+        z-index: 9;
+        border-radius: 14px;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.3);
+        }
+        .queryButtons{
+        bottom:3%;
+        position: absolute;
+        right:20%;
+        }
+        .content{
+         margin-left:20%; 
+        }
+         .btn-outline-info{
+        border-radius: 14px;
+        margin-left: 12px;
+        background-color:#00338d;
+        padding:5px;
+        color:white;
+        top:3.5px;
+        }
+     
+        }
+        
+        @media (min-width: 1024px) and (max-width: 1024px) { 
+        .PopUp {
+        margin-left:67%;
+        display: none;
+        position: fixed;
+        top:35px;
+        bottom: 75px;
+        width:30%;
+        z-index: 9;
+        border-radius: 14px;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.3);
+        }
+         .btn-outline-info{
+        border-radius: 14px;
+        margin-left: 12px;
+        background-color:#00338d;
+        padding:5px;
+        color:white;
+        top:3.5px;
+        }
+        .queryButtons{
+        bottom:3%;
+        position: absolute;
+        right:8%;
+        padding: 0.4em;
+        border-radius: 10px;
+        margin-left:5px;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
+        background-color:white;
+        flex-wrap:wrap;
+        width: 15%;
+        }
+                
+        }
+        
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+        
+        .PopUp {
+        margin-left:67%;
+        display: none;
+        position: fixed;
+        top:35px;
+        bottom: 75px;
+        width:30%;
+        z-index: 9;
+        border-radius: 14px;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.3);
+        }
+                
+       .PopUp{
+        display:block;
+        }
+         .content{
+         margin-left:20%; 
+        }
+         .btn-outline-info{
+        border-radius: 14px;
+        margin-left: 12px;
+        background-color:#00338d;
+        padding:5px;
+        color:white;
+        top:3.5px;
+        }
+        
+        .queryButtons{
+        bottom:3%;
+        position: absolute;
+        right:8%;
+        padding: 0.4em;
+        border-radius: 10px;
+        margin-left:5px;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
+        background-color:white;
+        flex-wrap:wrap;
+        width: 15%;
+        }
+
+ 		.noButton{
+        margin-left:22px;
+        }        
+        }
+        
+        @media (min-width: 1281px) {
+        .PopUp {
+        margin-left:67%;
+        display: none;
+        position: fixed;
+        top:35px;
+        bottom: 75px;
+        width:30%;
+        z-index: 9;
+        border-radius: 14px;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.3);
+        }  
+         .content{
+         margin-left:35%; 
+        }
+         .btn-outline-info{
+        border-radius: 14px;
+        margin-left: 12px;
+        background-color:#00338d;
+        padding:5px;
+        color:white;
+        top:3.5px;
+        }
+        .queryButtons{
+        bottom:3%;
+        position: absolute;
+        right:8%;
+        padding: 0.4em;
+        border-radius: 10px;
+        margin-left:5px;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
+        background-color:white;
+        flex-wrap:wrap;
+        width: 12%;
+        }
+        .noButton{
+        margin-left:22px;
+        }
+     
+        }
+        
+        @-webkit-keyframes bounceOutDown {
+        20% {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+        }
+        
+        40%,
+        45% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -20px, 0);
+        transform: translate3d(0, -20px, 0);
+        }
+        
+        to {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 2000px, 0);
+        transform: translate3d(0, 2000px, 0);
+        }
+        }
+        
+        @keyframes bounceOutDown {
+        20% {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+        }
+        
+        40%,
+        45% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -20px, 0);
+        transform: translate3d(0, -20px, 0);
+        }
+        
+        to {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 2000px, 0);
+        transform: translate3d(0, 2000px, 0);
+        }
+        }
+
+  </style>
+
+<body>
+        <div style="margin-left:35%; font-size:40px" class="slds-absolute-center">
+                <h1 style="color:#00338d;font-size:40px" class="slds-absolute-center">
+                    <b style="font-size:40px" >KPMG ChatBot Demo</b>
+                </h1>
+            </div>
+            
+            <div id="botPopUp" class="PopUp">
+                    <div class="slds-scope">
+                        <div id="lightning"></div>
+                    </div>
+            </div>
+            <div onclick="openClosePopup();" class="menu pmd-floating-action" id="btnShow" >
+                    <a href="javascript:void(0)" id="buttonA" class="btn pmd-btn-fab pmd-btn-raised btn-primary"> 
+                        <i class="material-icons pmd-sm" id="icon">chat</i>
+                    </a>
+                </div>
+                <div id="wantQuery" class="queryButtons" style="visibility: hidden;">&nbsp;&nbsp;&nbsp;Can i help you?
+                    <div class="queryButtonBox">
+                        <button type="button" id="yesButton" class="yesButton btn btn-outline-info pmd-ripple-effect" onclick="openClosePopup();">Yes</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" id="noButton" class="noButton btn btn-outline-info pmd-ripple-effect" onclick="CloseConfirmPopup();">No</button>
+                    </div>
+                </div>        
+                
+                
+                 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+                <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+                <link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
+        <script src="https://plus91labs-developer-edition.ap5.force.com/lightning/lightning.out.js"></script>
+        <script>
+                function openClosePopup() {
+                    console.log("Click");
+                    var popup = document.getElementById("botPopUp");
+                      console.log("Click");
+                    var icn = document.getElementById("icon");
+                      console.log("Click");
+                    
+                    if (popup.style.display === "none") {
+                        console.log("If Click");
+                        popup.style.display = "block";
+                        document.getElementById("wantQuery").style.display = "none";
+                        document.getElementById("icon").innerHTML="expand_more";
+                        console.log("end if Click");
+                    } else {
+                        popup.style.display = "none";
+                        document.getElementById("icon").innerHTML="chat";
+                    }
+                }
+                
+                function showIt() {
+                    document.getElementById("wantQuery").style.visibility = "visible";
+                }
+                setTimeout("showIt()", 5000);
+                
+                function CloseConfirmPopup() {
+                    document.getElementById("wantQuery").style.display = "none";
+                }  
+
+             $Lightning.use("c:lcVfDemoApp", function() {
+                $Lightning.createComponent("c:botComponent", {
+                      
+                    },
+                      "lightning",
+                      function(cmp) {
+                        console.log("LWC component was created");
+                        // do some stuff
+                      }
+                  );
+                },
+               'https://plus91labs-developer-edition.ap5.force.com/'
+              );
+        </script>
+</body>
+</html>
