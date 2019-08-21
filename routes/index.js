@@ -38,7 +38,7 @@ router.get("/bot", function(req, res, next) {
 });
 
 router.get("/chatbot", function(req, res, next) {
-  console.log('jsbot-kpmg);
+  console.log('jsbot-kpmg');
   res.render("jsbot", { msg: "Welcome" });
 });
 
