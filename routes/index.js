@@ -33,10 +33,12 @@ router.get("/", function(req, res, next) {
 });
 
 router.get("/bot", function(req, res, next) {
+  console.log('prashantbot-kpmg');
   res.render("bot", { msg: "Welcome" });
 });
 
-router.get("/plus91labsbot", function(req, res, next) {
+router.get("/chatbot", function(req, res, next) {
+  console.log('jsbot-kpmg);
   res.render("jsbot", { msg: "Welcome" });
 });
 
