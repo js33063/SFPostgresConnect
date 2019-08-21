@@ -418,7 +418,7 @@
                  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
                 <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
                 <link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
-        <script src="https://plus91labs-developer-edition.ap5.force.com/lightning/lightning.out.js"></script>
+        <script src="https://pranaj-developer-edition.ap5.force.com/lightning/lightning.out.js"></script>
         <script>
                 function openClosePopup() {
                     console.log("Click");
@@ -448,8 +448,8 @@
                     document.getElementById("wantQuery").style.display = "none";
                 }  
 
-             $Lightning.use("c:lcVfDemoApp", function() {
-                $Lightning.createComponent("c:botComponent", {
+             $Lightning.use("c:botApp", function() {
+                $Lightning.createComponent("c:botUCB", {
                       
                     },
                       "lightning",
@@ -459,7 +459,7 @@
                       }
                   );
                 },
-               'https://plus91labs-developer-edition.ap5.force.com/'
+               'https://pranaj-developer-edition.ap5.force.com/'
               );
         </script>
 </body>

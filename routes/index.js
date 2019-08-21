@@ -36,6 +36,11 @@ router.get("/bot", function(req, res, next) {
   res.render("bot", { msg: "Welcome" });
 });
 
+router.get("/plus91labsbot", function(req, res, next) {
+  res.render("jsbot", { msg: "Welcome" });
+});
+
+
 router.get("/casesubmit", function(req, res, next) {
     res.render("casesubmit", { msg: "Welcome" });
 });
