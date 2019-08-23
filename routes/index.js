@@ -39,7 +39,7 @@ router.get("/bot", function(req, res, next) {
 
 router.get("/plus91labsbot", function(req, res, next) {
   console.log('prashantbot-plus91labs');
-  res.render("jsbot", { msg: "Welcome" });
+  res.render("plus91labsbot", { msg: "Welcome" });
 });
 
 router.get("/chatbot", function(req, res, next) {
