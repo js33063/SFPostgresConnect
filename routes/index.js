@@ -76,7 +76,7 @@ router.post('/sendSms', function(req, res, next) {
   'to': [
     '91'+req.body.mobile  //Moblie Numbers 
   ],
-  'message': otp+"Your bot verfication code",
+  'message': otp+" Your bot verfication code",
   'format': 'json'
 };
  
