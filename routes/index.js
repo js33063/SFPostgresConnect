@@ -82,11 +82,11 @@ router.post('/sendSms', function(req, res, next) {
  
 springedge.messages.send(params, 5000, function (err, response) {
   if (err) {
-    res.send(err);
+    return console.log(err);
   }
   console.log(response);
-  res.send('OTP Sent:',otp);
-//  return res.status(200);
+  res.send({'otp':otp});
+  return res.status(200).json({'otp':otp});
 });
 });
 
