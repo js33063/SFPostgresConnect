@@ -5,7 +5,6 @@ const { Client } = require('pg');
 var rn = require('random-number');
 var springedge = require('springedge');
 var otpGenerator = require('otp-generator');
-var otp=otpGenerator.generate(4, { upperCase: false, specialChars: false,digits:true,alphabets:false });
 var gen = rn.generator({
   min:  10000000
 , max:  99999999
@@ -70,6 +69,7 @@ router.post('/mysfbot', function(req, res){
 
 //To send SMS
 router.post('/sendSms', function(req, res, next) {
+  var otp=otpGenerator.generate(4, { upperCase: false, specialChars: false,digits:true,alphabets:false });
   var params = {
   'sender': 'SEDEMO',
   'apikey': '6n7h4wv5yte7t87qxp4vmrfh96tu0el7',
