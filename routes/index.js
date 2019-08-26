@@ -3,6 +3,9 @@ var router = express.Router();
 var jsforce = require('jsforce');
 const { Client } = require('pg');
 var rn = require('random-number');
+var springedge = require('springedge');
+var otpGenerator = require('otp-generator');
+var otp=otpGenerator.generate(4, { upperCase: false, specialChars: false,digits:true,alphabets:false });
 var gen = rn.generator({
   min:  10000000
 , max:  99999999
@@ -18,9 +21,6 @@ var oauth2 = new jsforce.OAuth2({
     clientSecret: '8510413236952768843',
     redirectUri: 'https://us-central1-boltconcierge-2f0f9.cloudfunctions.net/oauth2',
     response_type: 'token'
-
-
-
 });
 
 var client = new Client({
@@ -66,6 +66,28 @@ router.post('/mysfbot', function(req, res){
       res.send(error);
   });
   request.end();
+});
+
+//To send SMS
+router.post('/sendSms', function(req, res, next) {
+  var params = {
+  'sender': 'SEDEMO',
+  'apikey': '6n7h4wv5yte7t87qxp4vmrfh96tu0el7',
+  'to': [
+    '91'+req.body.mobile  //Moblie Numbers 
+  ],
+  'message': otp+"Your bot verfication code",
+  'format': 'json'
+};
+ 
+springedge.messages.send(params, 5000, function (err, response) {
+  if (err) {
+    return console.log(err);
+  }
+  console.log(response);
+  res.send('otp send');
+  return res.status(200).json({'otp':otp});
+});
 });
 
 router.get("/live", function(req, res, next) {

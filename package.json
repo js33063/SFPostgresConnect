@@ -15,8 +15,10 @@
         "jade": "~1.11.0",
         "jsforce": "^1.9.1",
         "morgan": "^1.9.1",
+        "otp-generator": "^1.1.0",
         "pg": "^7.9.0",
         "random-number": "0.0.9",
-        "serve-favicon": "~2.4.5"
+        "serve-favicon": "~2.4.5",
+        "springedge": "^1.0.5"
     }
 }
