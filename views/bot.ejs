@@ -449,9 +449,10 @@
                 }  
 
              $Lightning.use("c:botApp", function() {
-                $Lightning.createComponent("c:botUCB", {
-                      
-                    },
+                var attributes = {
+                    BotId: "KP0001"
+                };
+                $Lightning.createComponent("c:botUCB",attributes,
                       "lightning",
                       function(cmp) {
                         console.log("LWC component was created");

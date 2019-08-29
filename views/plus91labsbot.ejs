@@ -453,10 +453,12 @@
                     document.getElementById("wantQuery").style.display = "none";
                 }  
 
-             $Lightning.use("c:plus91labBotApp", function() {
-                $Lightning.createComponent("c:botPlus91labs", {
-                      
-                    },
+             $Lightning.use("c:botApp", function() {
+               var attributes = {
+                    BotId: "PL0001"
+                };
+
+                $Lightning.createComponent("c:botUCB",attributes
                       "LcDisplayId",
                       function(cmp) {
                         console.log("LWC component was created");

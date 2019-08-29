@@ -93,6 +93,11 @@ springedge.messages.send(params, 5000, function (err, response) {
 router.get("/live", function(req, res, next) {
     res.render("live", { msg: "Welcome" });
 });
+
+router.get("/SFliveAgent", function(req, res, next) {
+    res.render("jslive", { msg: "Welcome" });
+});
+
 router.get("/sf", function(req, res, next) {
     var conn = new jsforce.Connection({
         // you can change loginUrl to connect to sandbox or prerelease env.
