@@ -26,6 +26,10 @@ var client = new Client({
     connectionString: 'postgres://ztofmzxuprvzke:6fe148964f7f25e2602cea7836bbb9f8f5b0b99cca8dbbafac4902d638686209@ec2-54-83-61-142.compute-1.amazonaws.com:5432/d31aef7km7hgds',
     ssl: true,
   });
+/* GET users listing. */
+router.get('/livetest', function(req, res, next) {
+     res.render("livetest", { msg: "Welcome" });
+});
 /* GET home page. */
 router.get("/", function(req, res, next) {
     res.render("case", { msg: "Welcome" });
