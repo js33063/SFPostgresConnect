@@ -76,14 +76,13 @@ router.post('/sendSms', function(req, res, next) {
   var otp=otpGenerator.generate(4, { upperCase: false, specialChars: false,digits:true,alphabets:false });
   var params = {
   'sender': 'SEDEMO',
-  'apikey': '6n7h4wv5yte7t87qxp4vmrfh96tu0el7',
+  'apikey': '6925gb1sdem70j5u657o201129r41829h',
   'to': [
     '91'+req.body.mobile  //Moblie Numbers 
   ],
   'message': otp+" Your bot verfication code",
   'format': 'json'
 };
- 
 springedge.messages.send(params, 5000, function (err, response) {
   if (err) {
     res.send(err);
